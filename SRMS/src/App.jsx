@@ -34,7 +34,7 @@ function App() {
                 </PageLayout>
               }
             />
-            {/* Uncomment for exams */}
+
             {/* <Route
               path="/exams"
               element={
