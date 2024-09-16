@@ -1,0 +1,6 @@
+.main-content {
+  position: relative;
+  z-index: 1; /* Higher z-index to stay above the header */
+  padding-top: 80px;
+  width: 100%;
+}
