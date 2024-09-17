@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import "../Styles/MainContent.css";
+import "../Styles/Sidebar.css";
+
 import { FaHome, FaClipboard, FaCalendarAlt, FaClock } from "react-icons/fa";
 
 const Sidebar = () => {
   return (
-    <aside className="sidebar w-1/5 bg-white border-r shadow-lg flex flex-col">
+    <aside className="sidebar w-64 bg-white border-r shadow-lg flex flex-col pt-16">
       <nav className="sidebar__nav flex flex-col flex-grow">
         <ul className="sidebar__list space-y-4 p-6">
           <li className="sidebar__item flex items-center text-purple-600 font-semibold">

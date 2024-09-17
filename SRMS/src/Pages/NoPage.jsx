@@ -1,9 +1,9 @@
-import Header from "../Components/Header";
+import PageLayout from "../Components/PageLayout";
 
 export default function NoPage() {
   return (
     <div>
-      <Header />
+      <PageLayout />
       <h2>Error 404: page not found!</h2>
     </div>
   );

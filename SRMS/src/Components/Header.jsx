@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import "../Styles/Header.css";
+
 import SchoolLogo from "../assets/Logo.png";
 import { FaSearch } from "react-icons/fa";
 import studentIcon from "../assets/Vector.png";
 
 const Header = ({ userName, pageTitle }) => {
   return (
-    <header className="w-full bg-white shadow-md p-4 fixed top-0 left-0 flex items-center justify-between z-10">
+    <header className="w-full  bg-white shadow-md p-4 fixed top-0 left-0 flex items-center justify-between z-10">
       <div className="sidebar__header p-6 flex flex-col items-center">
         <div className="sidebar__logo flex items-center">
           <img

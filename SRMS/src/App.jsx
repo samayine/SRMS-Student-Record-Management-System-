@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./Styles/App.css";
 import Dashboard from "./Pages/Dashboard";
 import GradeResult from "./Pages/GradeResult";
-//import Exams from "./Pages/ExamSchedule";
+import Report from "./Pages/Report";
+import Exams from "./Pages/ExamSchedule";
+import Performance from "./Pages/Performance";
 import About from "./Pages/About";
 import Sidebar from "./Components/Sidebar";
 import NoPage from "./Pages/NoPage";
@@ -34,19 +36,35 @@ function App() {
                 </PageLayout>
               }
             />
+            <Route
+              path="/report"
+              element={
+                <PageLayout userName={userName} pageTitle="Report">
+                  <Report />
+                </PageLayout>
+              }
+            />
 
-            {/* <Route
+            <Route
               path="/exams"
               element={
                 <PageLayout userName={userName} pageTitle="Exams Schedule">
                   <Exams />
                 </PageLayout>
               }
-            /> */}
+            />
+            <Route
+              path="/performance"
+              element={
+                <PageLayout userName={userName} pageTitle="Performance">
+                  <Performance />
+                </PageLayout>
+              }
+            />
             <Route
               path="/about"
               element={
-                <PageLayout userName={userName} pageTitle="About Us">
+                <PageLayout userName={userName} pageTitle="About">
                   <About />
                 </PageLayout>
               }
