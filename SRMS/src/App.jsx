@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/teacher/dashboard/*" element={<TeacherDashboard />} />
+        {/* <Route path="/student/dashboard/*" element={<} */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

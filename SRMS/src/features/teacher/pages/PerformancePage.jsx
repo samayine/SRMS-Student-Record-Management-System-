@@ -21,7 +21,25 @@ const PerformancePage = () => {
 
   return (
     <div className="flex h-screen">
+      {/* Sidebar and other components can be added here */}
+      
       <div className="flex-1 bg-gray-100 p-6">
+        {/* Header */}
+        <header className="flex items-center justify-between mb-6">
+          <h1 className="text-2xl font-bold">Performance Page</h1>
+          <div className="flex items-center space-x-4">
+            <span>Mr. Jackson</span>
+            <div className="rounded-full bg-gray-200 p-2">
+              <img
+                src="https://via.placeholder.com/40"
+                alt="User"
+                className="rounded-full"
+              />
+            </div>
+          </div>
+        </header>
+
+        {/* Form */}
         <h1 className="text-2xl font-bold mb-4">Send Message to Student</h1>
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-4">
           <div className="mb-4">

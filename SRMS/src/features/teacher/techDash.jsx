@@ -1,12 +1,13 @@
 import React from 'react';
 import {  Routes, Route, Navigate } from 'react-router-dom';
+import AboutUs from './pages/AboutUs';
+import PerformancePage from './pages/PerformancePage';
 import SideBar from './componet/sideBar';
-import Dashboard from './pages/dashboard';
+import Dashboard from './pages/TeacherDashboard';
 import InputGrade from './pages/InputGrade';
-import ExamSchedule from './pages/examSchdule'; // Fixed typo in import
+import ExamSchedule from './pages/ExamSchedule'; 
 import MySchedule from './pages/mySchedule';
-import performance from './pages/performance';
-import aboutus from './pages/aboutUs'
+
 
 
 const TeacherDashboard = () => {
@@ -16,12 +17,12 @@ const TeacherDashboard = () => {
       <div className="flex-grow p-6">
         
           <Routes>
-            <Route path="/teacher/dashboard" element={<Dashboard />} />
-            <Route path="/teacher/dashboard/inputgrade" element={<InputGrade />} />
-            <Route path="/teacher/dashboard/examschedule" element={<ExamSchedule />} />
-            <Route path="/teacher/dashboard/myschedule" element={<MySchedule />} />
-            <Route path="/teacher/dashboard/performance" element={<performance/>}/>
-            <Route path="/teacher/dashboard/aboutus" element={<aboutus/>}/>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/inputgrade" element={<InputGrade />} />
+            <Route path="/examschedule" element={<ExamSchedule />} />
+            <Route path="/myschedule" element={<MySchedule />} />
+            <Route path="/performance" element={<PerformancePage/>}/>
+            <Route path="/aboutus" element={<AboutUs/>}/>
             <Route path="*" element={<div>Page not found</div>} />
           </Routes>
         

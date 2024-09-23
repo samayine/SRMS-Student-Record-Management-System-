@@ -78,9 +78,9 @@ function SideBar() {
 
           <li
             className={`flex items-center cursor-pointer p-3 rounded-lg ${
-              activeItem === '/teacher/dashboard/about-us' ? 'bg-teal-500 text-white' : 'text-gray-600 hover:text-teal-500 hover:bg-gray-100'
+              activeItem === '/teacher/dashboard/aboutus' ? 'bg-teal-500 text-white' : 'text-gray-600 hover:text-teal-500 hover:bg-gray-100'
             }`}
-            onClick={() => handleItemClick('/teacher/dashboard/about-us')}
+            onClick={() => handleItemClick('/teacher/dashboard/aboutus')}
           >
             <FaInfoCircle className="mr-3" />
             <Link to="/teacher/dashboard/aboutus">About Us</Link>
