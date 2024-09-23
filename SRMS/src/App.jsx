@@ -1,13 +1,8 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import {BrowserRouter as Router,Routes,Route,Navigate,} from "react-router-dom";
 import LoginPage from "./features/Login/Landing";
 import SignUpPage from "./features/Login/signup";
-import TeacherDashboard from "./features/teacher/techDash"; // Ensure this import path is correct
-
+import TeacherDashboard from "./features/teacher/techDash"; 
+import StudentDashboard from "./features/student/StudentDashboard";
 function App() {
   return (
     <Router>
@@ -15,7 +10,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/teacher/dashboard/*" element={<TeacherDashboard />} />
-        {/* <Route path="/student/dashboard/*" element={<} */}
+        <Route path="/student/*" element={<StudentDashboard/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

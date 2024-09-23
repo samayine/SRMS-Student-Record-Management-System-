@@ -207,7 +207,7 @@ function LoginPage() {
         e.preventDefault();
         // Add your logic here to validate and navigate based on the role
         if (selectedRole === 'Student') {
-            navigate('/student/dashboard');
+            navigate('/student');
         } else if (selectedRole === 'Teacher') {
             navigate('/teacher/dashboard');
         } else if (selectedRole === 'Parent') {

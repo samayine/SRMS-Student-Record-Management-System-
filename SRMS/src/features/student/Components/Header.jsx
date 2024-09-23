@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import "../Styles/Header.css";
 
-import SchoolLogo from "../assets/Logo.png";
+import SchoolLogo from "../../../assets/Logo.png";
 import { FaSearch } from "react-icons/fa";
-import studentIcon from "../assets/Vector.png";
+import studentIcon from "../../../assets/Vector.png";
 
 const Header = ({ userName, pageTitle }) => {
   return (

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import "../Styles/MainContent.css";
-import studentImage from "../assets/student.png";
+import studentImage from "../../../assets/student.png";
 
 const WelcomeBackCard = ({ studentName }) => {
   return (

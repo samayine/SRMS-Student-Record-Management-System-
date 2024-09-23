@@ -10,7 +10,11 @@ const Dashboard = () => {
         <div className="ml-64 flex-1 bg-gray-100 p-6 pt-[60px]">
           <WelcomeBackCard studentName="Abebe " />
           <section className="flex space-x-6">
-            <StudentInfoCard studentName="Abebe Kebede" class_grade="7B" />
+            <StudentInfoCard
+              studentName="Abebe Kebede"
+              student_id="ST/4536/7"
+              class_grade="7B"
+            />
           </section>
         </div>
       </PageLayout>
