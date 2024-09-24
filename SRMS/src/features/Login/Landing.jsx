@@ -211,9 +211,9 @@ function LoginPage() {
         } else if (selectedRole === 'Teacher') {
             navigate('/teacher/dashboard');
         } else if (selectedRole === 'Parent') {
-            navigate('/parent/dashboard');
+            navigate('/parent');
         } else if (selectedRole === 'Admin') {
-            navigate('/admin/dashboard');
+            navigate('/admin');
         }
     };
 

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import Logo from '../../assets/logo.png';
-import backgroundImage from '../../assets/student.png';
+import backgroundImage from '../../assets/student.png'; // Adjust the path as needed
 import { Link } from 'react-router-dom';
-
 
 function SignUpPage() {
     const [formData, setFormData] = useState({
@@ -11,7 +9,9 @@ function SignUpPage() {
         email: '',
         password: '',
         confirmPassword: '',
-        studentFullName: '',
+        studentFirstName: '',
+        studentMiddleName: '',
+        studentGrandfatherName: '',
         studentId: '',
     });
 
@@ -22,11 +22,12 @@ function SignUpPage() {
         email: false,
         password: false,
         confirmPassword: false,
-        studentFullName: false,
+        studentFirstName: false,
+        studentMiddleName: false,
+        studentGrandfatherName: false,
         studentId: false,
     });
 
-    // Toggle password visibility
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -35,34 +36,18 @@ function SignUpPage() {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
-    // Handle input changes
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    // Placeholder animation on focus and input
     const handleFocus = (field) => {
         setPlaceholderActive((prev) => ({ ...prev, [field]: true }));
-        // Set default value for name fields
-        if (field === 'fullName' && !formData.fullName) {
-            setFormData((prev) => ({ ...prev, fullName: 'Firstname Middlename Lastname' }));
-        }
-        if (field === 'studentFullName' && !formData.studentFullName) {
-            setFormData((prev) => ({ ...prev, studentFullName: 'Firstname Middlename Lastname' }));
-        }
     };
 
     const handleBlur = (field, value) => {
         if (!value) {
             setPlaceholderActive((prev) => ({ ...prev, [field]: false }));
-            // Reset to empty if default value was set
-            if (field === 'fullName' && value === 'Firstname Middlename Lastname') {
-                setFormData((prev) => ({ ...prev, fullName: '' }));
-            }
-            if (field === 'studentFullName' && value === 'Firstname Middlename Lastname') {
-                setFormData((prev) => ({ ...prev, studentFullName: '' }));
-            }
         }
     };
 
@@ -78,143 +63,57 @@ function SignUpPage() {
                 </div>
 
                 {/* Right side with sign-up form */}
-                <div className="w-1/2 p-12 flex flex-col justify-center" style={{ backgroundColor: '#E6F0F3', height: '100%' }}>
+                <div className="w-1/2 p-8 flex flex-col justify-center" style={{ backgroundColor: '#E6F0F3', height: '100%' }}>
                     <div className="text-center mb-8">
                         <p className="text-lg" style={{ color: '#2C387E' }}>Parent Sign up</p>
                     </div>
 
-                    {/* Parent Full Name Input */}
-                    <div className="mb-4 relative">
-                        <input
-                            type="text"
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            onFocus={() => handleFocus('fullName')}
-                            onBlur={() => handleBlur('fullName', formData.fullName)}
-                            className="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:outline-none"
-                            style={{ color: '#2C387E' }}
-                        />
-                        <label
-                            className={`absolute left-3 transition-all duration-200 text-gray-500 ${placeholderActive.fullName || formData.fullName ? 'text-xs -top-2.5' : 'text-base top-3'}`}
-                        >
-                            Full Name
-                        </label>
-                    </div>
-
-                    {/* Email Input */}
-                    <div className="mb-4 relative">
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            onFocus={() => handleFocus('email')}
-                            onBlur={() => handleBlur('email', formData.email)}
-                            className="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:outline-none"
-                            style={{ color: '#2C387E' }}
-                        />
-                        <label
-                            className={`absolute left-3 transition-all duration-200 text-gray-500 ${placeholderActive.email || formData.email ? 'text-xs -top-2.5' : 'text-base top-3'}`}
-                        >
-                            Email
-                        </label>
-                    </div>
-
-                    {/* Password Input */}
-                    <div className="mb-4 relative">
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            name="password"
-                            value={formData.password}
-                            onChange={handleInputChange}
-                            onFocus={() => handleFocus('password')}
-                            onBlur={() => handleBlur('password', formData.password)}
-                            className="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:outline-none"
-                            style={{ color: '#2C387E' }}
-                        />
-                        <label
-                            className={`absolute left-3 transition-all duration-200 text-gray-500 ${placeholderActive.password || formData.password ? 'text-xs -top-2.5' : 'text-base top-3'}`}
-                        >
-                            New Password
-                        </label>
-                        <div className="absolute right-3 top-4 cursor-pointer" onClick={handleShowPassword}>
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    {/* Input Fields */}
+                    {[
+                        { label: 'Full Name', name: 'fullName' },
+                        { label: 'Email', name: 'email' },
+                        { label: 'New Password', name: 'password', type: showPassword ? 'text' : 'password', showToggle: true },
+                        { label: 'Confirm Password', name: 'confirmPassword', type: showConfirmPassword ? 'text' : 'password', showToggle: true },
+                        { label: 'Student First Name', name: 'studentFirstName' },
+                        { label: 'Student Middle Name', name: 'studentMiddleName' },
+                        { label: 'Student Grandfather Name', name: 'studentGrandfatherName' },
+                        { label: 'Student ID', name: 'studentId' },
+                    ].map(({ label, name, type = 'text', showToggle }) => (
+                        <div key={name} className="mb-4 relative">
+                            <input
+                                type={type}
+                                name={name}
+                                value={formData[name]}
+                                onChange={handleInputChange}
+                                onFocus={() => handleFocus(name)}
+                                onBlur={() => handleBlur(name, formData[name])}
+                                className="w-full border border-gray-300 rounded-lg p-2 focus:border-blue-500 focus:outline-none"
+                                style={{ color: '#2C387E', height: '40px' }} // Reduced height
+                            />
+                            <label
+                                className={`absolute left-3 transition-all duration-200 text-gray-500 ${placeholderActive[name] || formData[name] ? 'text-xs -top-2.5' : 'text-base top-3'}`}
+                            >
+                                {label}
+                            </label>
+                            {showToggle && (
+                                <div className="absolute right-3 top-3 cursor-pointer" onClick={name === 'password' ? handleShowPassword : handleShowConfirmPassword}>
+                                    {name === 'password' ? (showPassword ? <FaEyeSlash /> : <FaEye />) : (showConfirmPassword ? <FaEyeSlash /> : <FaEye />)}
+                                </div>
+                            )}
                         </div>
-                    </div>
+                    ))}
 
-                    {/* Confirm Password Input */}
-                    <div className="mb-4 relative">
-                        <input
-                            type={showConfirmPassword ? 'text' : 'password'}
-                            name="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleInputChange}
-                            onFocus={() => handleFocus('confirmPassword')}
-                            onBlur={() => handleBlur('confirmPassword', formData.confirmPassword)}
-                            className="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:outline-none"
-                            style={{ color: '#2C387E' }}
-                        />
-                        <label
-                            className={`absolute left-3 transition-all duration-200 text-gray-500 ${placeholderActive.confirmPassword || formData.confirmPassword ? 'text-xs -top-2.5' : 'text-base top-3'}`}
-                        >
-                            Confirm Password
-                        </label>
-                        <div className="absolute right-3 top-4 cursor-pointer" onClick={handleShowConfirmPassword}>
-                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                        </div>
-                    </div>
-
-                    {/* Student Full Name Input */}
-                    <div className="mb-4 relative">
-                        <input
-                            type="text"
-                            name="studentFullName"
-                            value={formData.studentFullName}
-                            onChange={handleInputChange}
-                            onFocus={() => handleFocus('studentFullName')}
-                            onBlur={() => handleBlur('studentFullName', formData.studentFullName)}
-                            className="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:outline-none"
-                            style={{ color: '#2C387E' }}
-                        />
-                        <label
-                            className={`absolute left-3 transition-all duration-200 text-gray-500 ${placeholderActive.studentFullName || formData.studentFullName ? 'text-xs -top-2.5' : 'text-base top-3'}`}
-                        >
-                            Student Full Name
-                        </label>
-                    </div>
-
-                    {/* Student ID Input */}
-                    <div className="mb-4 relative">
-                        <input
-                            type="text"
-                            name="studentId"
-                            value={formData.studentId}
-                            onChange={handleInputChange}
-                            onFocus={() => handleFocus('studentId')}
-                            onBlur={() => handleBlur('studentId', formData.studentId)}
-                            className="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:outline-none"
-                            style={{ color: '#2C387E' }}
-                        />
-                        <label
-                            className={`absolute left-3 transition-all duration-200 text-gray-500 ${placeholderActive.studentId || formData.studentId ? 'text-xs -top-2.5' : 'text-base top-3'}`}
-                        >
-                            Student ID
-                        </label>
-                    </div>
-
-                    {/* Sign-up Button */}
-                    <button className="w-full bg-blue-600 text-white rounded-full p-3 font-semibold hover:bg-blue-700 transition-colors" style={{ backgroundColor: '#2C387E' }}>
-                        Sign up
+                    {/* Sign-Up Button */}
+                    <button className="bg-blue-600 text-white rounded-lg py-2 mt-4 hover:bg-blue-700 transition duration-200">
+                        Sign Up
                     </button>
 
-                    {/* Sign-in and Privacy statement */}
-                    <div className="text-center mt-4">
-                        <p className="text-sm" style={{ color: '#2C387E' }}>
-                        Already have an account? <Link to="/" className="text-blue-500 hover:underline">Sign in here</Link>
-                        </p>
-                        <p className="text-xs mt-2" style={{ color: '#2C387E' }}>
-                            By signing up, you agree to our <a href="#" className="text-blue-500 hover:underline">Terms</a> & <a href="#" className="text-blue-500 hover:underline">Privacy Policy</a>.
+
+                    {/* Link to Login */}
+                    <div className="text-center mt-2">
+                        <p className="text-sm">
+                            Already have an account? 
+                            <Link to="/login" className="text-blue-500 hover:underline"> Log In</Link>
                         </p>
                     </div>
                 </div>
