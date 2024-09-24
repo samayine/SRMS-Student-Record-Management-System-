@@ -28,6 +28,8 @@ function SignUpPage() {
         studentId: false,
     });
 
+    const [passwordError, setPasswordError] = useState('');
+
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -39,6 +41,9 @@ function SignUpPage() {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
+        if (name === 'password' || name === 'confirmPassword') {
+            setPasswordError(''); // Reset error on typing
+        }
     };
 
     const handleFocus = (field) => {
@@ -51,9 +56,22 @@ function SignUpPage() {
         }
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // Password validation: Check if password and confirm password are the same
+        if (formData.password !== formData.confirmPassword) {
+            setPasswordError('Passwords do not match');
+            return;
+        }
+
+        // Proceed with form submission (e.g., API call)
+        console.log('Form submitted:', formData);
+    };
+
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100 p-4">
-            <div className="flex bg-white rounded-2xl shadow-lg overflow-hidden" style={{ maxHeight: '90%', width: '60%', maxWidth: '1200px' }}>
+            <form onSubmit={handleSubmit} className="flex bg-white rounded-2xl shadow-lg overflow-hidden" style={{ maxHeight: '90%', width: '60%', maxWidth: '1200px' }}>
                 {/* Left side with image and slogan */}
                 <div className="w-3/4 relative bg-cover" style={{ backgroundImage: `url(${backgroundImage})` }}>
                     <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
@@ -103,21 +121,23 @@ function SignUpPage() {
                         </div>
                     ))}
 
+                    {/* Password Mismatch Error */}
+                    {passwordError && <p className="text-red-500 text-sm mb-2">{passwordError}</p>}
+
                     {/* Sign-Up Button */}
-                    <button className="bg-blue-600 text-white rounded-lg py-2 mt-4 hover:bg-blue-700 transition duration-200">
+                    <button type="submit" className="bg-custom-blue text-white rounded-lg py-2 mt-4 hover:bg-blue-700 transition duration-200">
                         Sign Up
                     </button>
-
 
                     {/* Link to Login */}
                     <div className="text-center mt-2">
                         <p className="text-sm">
-                            Already have an account? 
+                            Already have an account?
                             <Link to="/login" className="text-blue-500 hover:underline"> Log In</Link>
                         </p>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

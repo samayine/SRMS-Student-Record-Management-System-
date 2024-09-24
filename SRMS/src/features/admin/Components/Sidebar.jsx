@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../../assets/Logo.png";
-
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   FaHome,
@@ -31,7 +31,7 @@ const Sidebar = () => {
               className={({ isActive }) =>
                 `flex items-center py-2 px-4 transition-colors rounded ${
                   isActive
-                    ? "bg-blue-500 text-black"
+                    ? " text-black"
                     : "hover:bg-blue-100 hover:text-blue-500"
                 }`
               }

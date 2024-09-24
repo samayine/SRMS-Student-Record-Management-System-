@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import "../Styles/MainContent.css";
-import studentImage from "../../../assets/student.png";
+// import studentImage from "../../../assets/student.png";
 
 const WelcomeBackCard = ({ studentName }) => {
   return (
@@ -15,9 +15,9 @@ const WelcomeBackCard = ({ studentName }) => {
           announcement and performance.
         </p>
       </div>
-      <div className="w-20 h-20 p-0 rounded-lg overflow-hidden">
+      {/* <div className="w-20 h-20 p-0 rounded-lg overflow-hidden">
         <img src={studentImage} alt="Student" className="w-full h-full" />
-      </div>
+      </div> */}
     </section>
   );
 };

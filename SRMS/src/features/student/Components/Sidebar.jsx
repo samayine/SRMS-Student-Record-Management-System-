@@ -20,9 +20,9 @@ const Sidebar = () => {
             <NavLink
               to="/student"
               className={({ isActive }) =>
-                `sidebar__NavLink flex-1 ${
+                `sidebar__NavLink flex-1 p-2 rounded-lg ${
                   isActive
-                    ? "text-black bg-blue-500 font-semibold"
+                    ? "text-gray  font-semibold "
                     : "text-gray-600 hover:text-blue-500 hover:bg-blue-100"
                 }`
               }
@@ -35,9 +35,9 @@ const Sidebar = () => {
             <NavLink
               to="/student/grade"
               className={({ isActive }) =>
-                `sidebar__NavLink flex-1 ${
+                `sidebar__NavLink flex-1 p-2 rounded-lg ${
                   isActive
-                    ? "text-black bg-blue-500 font-semibold"
+                    ? "text-white bg-blue-500 font-semibold shadow-lg"
                     : "text-gray-600 hover:text-blue-500 hover:bg-blue-100"
                 }`
               }
@@ -50,9 +50,9 @@ const Sidebar = () => {
             <NavLink
               to="/student/period"
               className={({ isActive }) =>
-                `sidebar__NavLink flex-1 ${
+                `sidebar__NavLink flex-1 p-2 rounded-lg ${
                   isActive
-                    ? "text-black bg-blue-500 font-semibold"
+                    ? "text-white bg-blue-500 font-semibold shadow-lg"
                     : "text-gray-600 hover:text-blue-500 hover:bg-blue-100"
                 }`
               }
@@ -65,9 +65,9 @@ const Sidebar = () => {
             <NavLink
               to="/student/exams"
               className={({ isActive }) =>
-                `sidebar__NavLink flex-1 ${
+                `sidebar__NavLink flex-1 p-2 rounded-lg ${
                   isActive
-                    ? "text-black bg-blue-500 font-semibold"
+                    ? "text-white bg-blue-500 font-semibold shadow-lg"
                     : "text-gray-600 hover:text-blue-500 hover:bg-blue-100"
                 }`
               }
@@ -80,9 +80,9 @@ const Sidebar = () => {
             <NavLink
               to="/student/performance"
               className={({ isActive }) =>
-                `sidebar__NavLink flex-1 ${
+                `sidebar__NavLink flex-1 p-2 rounded-lg ${
                   isActive
-                    ? "text-black bg-blue-500 font-semibold"
+                    ? "text-white bg-blue-500 font-semibold shadow-lg"
                     : "text-gray-600 hover:text-blue-500 hover:bg-blue-100"
                 }`
               }
@@ -95,9 +95,9 @@ const Sidebar = () => {
             <NavLink
               to="/student/about"
               className={({ isActive }) =>
-                `sidebar__NavLink flex-1 ${
+                `sidebar__NavLink flex-1 p-2 rounded-lg ${
                   isActive
-                    ? "text-black bg-blue-500 font-semibold"
+                    ? "text-white bg-blue-500 font-semibold shadow-lg"
                     : "text-gray-600 hover:text-blue-500 hover:bg-blue-100"
                 }`
               }
