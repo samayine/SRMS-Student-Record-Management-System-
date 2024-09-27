@@ -1,9 +1,17 @@
+import { useState } from "react";
+
 import PageLayout from "../Components/PageLayout";
 
 import GradeTable from "../Components/GradeTable";
 import RankDisplay from "../Components/RankDisplay";
 
 function GradeResult() {
+  const [selectedSemester, setselectedSemester] = useState(1);
+
+  const handleSemesterChange = (event) => {
+    setselectedSemester(event.target.value);
+  };
+
   return (
     <div className="ml-64 flex-1 bg-gray-100 p-6 mt-[65px]">
       <PageLayout userName="Abebe" pageTitle="Grades and Results">
@@ -14,18 +22,23 @@ function GradeResult() {
             <label htmlFor="semester" className="mr-2 text-lg font-medium">
               Semester
             </label>
-            <select id="semester" className="border rounded px-3 py-1">
-              <option>1</option>
-              <option>2</option>
+            <select
+              id="semester"
+              value={selectedSemester}
+              onChange={handleSemesterChange}
+              className="border rounded px-3 py-1"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
             </select>
           </div>
         </div>
 
         {/* Grade Table */}
-        <GradeTable />
+        <GradeTable semester={selectedSemester} />
 
         {/* Rank Display */}
-        <RankDisplay />
+        <RankDisplay semester={selectedSemester} />
       </PageLayout>
     </div>
   );

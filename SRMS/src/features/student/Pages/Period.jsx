@@ -2,7 +2,18 @@ import PageLayout from "../Components/PageLayout";
 
 const PeriodTable = () => {
   const schedule = {
-    Monday: ["Math", "", "", "Physics", "", "", ""],
+    Monday: [
+      "Math",
+      "Afan Oromoo",
+      "Amharic",
+      "Break Fast",
+      "English",
+      "IT",
+      "Lunch Break",
+      "HP",
+
+      "Chemistry",
+    ],
     Tuesday: ["English", "", "", "English ", "", "", ""],
     Wednesday: ["Sport", "", "English", "", "", "", ""],
     Thursday: ["", "", "", "Amharic", "", "English ", ""],
@@ -10,13 +21,15 @@ const PeriodTable = () => {
   };
 
   const timeSlots = [
-    "9:00 - 10:00",
-    "10:00 - 11:00",
-    "11:00 - 12:00",
-    "12:00 - 1:00",
-    "1:00 - 2:00",
-    "2:00 - 3:00",
-    "3:00 - 4:00",
+    "2:30 - 3:15",
+    "3:15 - 4:00",
+    "4:00 - 4:45",
+    "4:45 - 5:15",
+    "5:15 - 6:00",
+    "6:00 - 6:45",
+    "6:45 - 7:45",
+    "7:45 - 8:30",
+    "8:30 - 9:15",
   ];
 
   return (
