@@ -3,20 +3,20 @@ import PropTypes from "prop-types";
 function GradeTable({ semester }) {
   const semesterData = {
     1: [
-      { subject: "Maths", result: 28, avg: 22.5, highest: 30 },
-      { subject: "English", result: 29, avg: 20.5, highest: 29 },
-      { subject: "Chemistry", result: 14, avg: 22.5, highest: 30 },
-      { subject: "Physics", result: 26.5, avg: 20.5, highest: 27 },
-      { subject: "Biology", result: 26, avg: 20.5, highest: 29 },
-      { subject: "Amharic", result: 28, avg: 20.5, highest: 30 },
+      { subject: "Maths", test1: 16, assignment: 8, test2: 14, final: 42 },
+      { subject: "English", test1: 18, assignment: 9, test2: 17, final: 43 },
+      { subject: "Chemistry", test1: 10, assignment: 6, test2: 12, final: 34 },
+      { subject: "Physics", test1: 17, assignment: 8, test2: 16, final: 46 },
+      { subject: "Biology", test1: 16, assignment: 9, test2: 15, final: 41 },
+      { subject: "Amharic", test1: 19, assignment: 8, test2: 18, final: 45 },
     ],
     2: [
-      { subject: "Maths", result: 19, avg: 20, highest: 25 },
-      { subject: "English", result: 24, avg: 20.5, highest: 29 },
-      { subject: "Chemistry", result: 28, avg: 22.5, highest: 29 },
-      { subject: "Physics", result: 29, avg: 20.5, highest: 29 },
-      { subject: "Biology", result: 30, avg: 25, highest: 30 },
-      { subject: "Amharic", result: 27, avg: 20.5, highest: 27 },
+      { subject: "Maths", test1: 15, assignment: 7, test2: 16, final: 38 },
+      { subject: "English", test1: 17, assignment: 9, test2: 18, final: 44 },
+      { subject: "Chemistry", test1: 18, assignment: 8, test2: 17, final: 48 },
+      { subject: "Physics", test1: 19, assignment: 9, test2: 18, final: 49 },
+      { subject: "Biology", test1: 18, assignment: 9, test2: 17, final: 47 },
+      { subject: "Amharic", test1: 17, assignment: 8, test2: 15, final: 41 },
     ],
   };
 
@@ -29,9 +29,11 @@ function GradeTable({ semester }) {
         <thead className="bg-gray-200 text-sm uppercase text-gray-600">
           <tr>
             <th className="px-4 py-2">Subject</th>
-            <th className="px-4 py-2">Student Result</th>
-            <th className="px-4 py-2">Class AVG</th>
-            <th className="px-4 py-2">Highest Grade</th>
+            <th className="px-4 py-2">Test 1 (20)</th>
+            <th className="px-4 py-2">Assignment (10)</th>
+            <th className="px-4 py-2">Test 2 (20)</th>
+            <th className="px-4 py-2">Final (50)</th>
+            <th className="px-4 py-2">Total (100)</th>
           </tr>
         </thead>
         <tbody className="text-sm">
@@ -41,9 +43,13 @@ function GradeTable({ semester }) {
               className={index % 2 === 0 ? "bg-white" : "bg-gray-300"}
             >
               <td className="border px-4 py-2">{row.subject}</td>
-              <td className="border px-4 py-2">{row.result}</td>
-              <td className="border px-4 py-2">{row.avg}</td>
-              <td className="border px-4 py-2 font-semibold">{row.highest}</td>
+              <td className="border px-4 py-2">{row.test1}</td>
+              <td className="border px-4 py-2">{row.assignment}</td>
+              <td className="border px-4 py-2">{row.test2}</td>
+              <td className="border px-4 py-2">{row.final}</td>
+              <td className="border px-4 py-2 font-semibold">
+                {row.test1 + row.assignment + row.test2 + row.final}
+              </td>
             </tr>
           ))}
         </tbody>

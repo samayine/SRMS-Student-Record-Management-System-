@@ -1,10 +1,11 @@
 import PageLayout from "../Components/PageLayout";
+import Footer from "../Components/Footer"; // Import the Footer component
 
 function About() {
   return (
     <div className="ml-64 flex-1 bg-gray-100 p-6 mt-[65px]">
       <PageLayout userName="Abebe" pageTitle="About">
-        <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
+        <div className="bg-gray p-6 shadow-md rounded-lg">
           <h1 className="text-3xl font-bold mb-4">About Us</h1>
           <div className="bg-white shadow-md rounded-lg p-6 max-w-4xl w-full">
             <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
@@ -59,6 +60,7 @@ function About() {
           </div>
         </div>
       </PageLayout>
+      <Footer /> {/* Add the Footer here */}
     </div>
   );
 }
