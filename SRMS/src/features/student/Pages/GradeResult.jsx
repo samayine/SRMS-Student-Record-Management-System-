@@ -1,7 +1,17 @@
-import PropTypes from "prop-types";
+import { useState } from "react";
+import PageLayout from "../Components/PageLayout";
+import GradeTable from "../Components/GradeTable";
+import RankDisplay from "../Components/RankDisplay";
 
-function GradeTable({ semester }) {
-  const semesterData = {
+function GradeResult() {
+  const [selectedSemester, setSelectedSemester] = useState(1);
+
+  const handleSemesterChange = (event) => {
+    setSelectedSemester(event.target.value);
+  };
+
+  // Sample grades data based on selected semester
+  const gradesData = {
     1: [
       { subject: "Maths", test1: 16, assignment: 8, test2: 14, final: 42 },
       { subject: "English", test1: 18, assignment: 9, test2: 17, final: 43 },
@@ -20,49 +30,38 @@ function GradeTable({ semester }) {
     ],
   };
 
-  const data = semesterData[semester] || [];
-
-  // Add total to each grade object
-  const gradesWithTotal = data.map((row) => ({
-    ...row,
-    total: row.test1 + row.assignment + row.test2 + row.final,
-  }));
+  const grades = gradesData[selectedSemester] || [];
 
   return (
-    <div className="bg-white shadow-md rounded overflow-hidden">
-      <table className="min-w-full table-auto text-left">
-        <thead className="bg-gray-200 text-sm uppercase text-gray-600">
-          <tr>
-            <th className="px-4 py-2">Subject</th>
-            <th className="px-4 py-2">Test 1</th>
-            <th className="px-4 py-2">Assignment</th>
-            <th className="px-4 py-2">Test 2</th>
-            <th className="px-4 py-2">Final</th>
-            <th className="px-4 py-2">Total</th>
-          </tr>
-        </thead>
-        <tbody className="text-sm">
-          {gradesWithTotal.map((row, index) => (
-            <tr
-              key={index}
-              className={index % 2 === 0 ? "bg-white" : "bg-gray-300"}
+    <div className="ml-64 flex-1 bg-gray-100 p-6 mt-[65px]">
+      <PageLayout userName="Abebe" pageTitle="Grades and Results">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-semibold">Grade Result</h2>
+          <div className="flex items-center">
+            <label htmlFor="semester" className="mr-2 text-lg font-medium">
+              Semester
+            </label>
+            <select
+              id="semester"
+              value={selectedSemester}
+              onChange={handleSemesterChange}
+              className="border rounded px-3 py-1"
             >
-              <td className="border px-4 py-2">{row.subject}</td>
-              <td className="border px-4 py-2">{row.test1}</td>
-              <td className="border px-4 py-2">{row.assignment}</td>
-              <td className="border px-4 py-2">{row.test2}</td>
-              <td className="border px-4 py-2">{row.final}</td>
-              <td className="border px-4 py-2 font-semibold">{row.total}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Grade Table */}
+        <GradeTable semester={selectedSemester} />
+
+        {/* Rank Display */}
+        <RankDisplay semester={selectedSemester} grades={grades} />
+      </PageLayout>
     </div>
   );
 }
 
-GradeTable.propTypes = {
-  semester: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
-export default GradeTable;
+export default GradeResult;
